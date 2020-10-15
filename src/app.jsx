@@ -18,9 +18,9 @@ function App() {
       .then(response => response.json())
       .then(result => setVideos(result.items))
       .catch(error => console.log("error", error));
-  }, [videos]);
+  }, []);
 
-  return <VideoList key={videos.id} videos={videos} />;
+  return <VideoList videos={videos} />;
 }
 
 export default App;
