@@ -1,0 +1,47 @@
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 6px 0 6px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+}
+.image {
+  width: 30px;
+  height: 30px;
+}
+.title {
+  margin: 0;
+  height: 30px;
+  font-size: 20px;
+  line-height: 30px;
+  padding: 0 6px;
+}
+.searchbar {
+  align-items: center;
+}
+.input {
+  width: 50%;
+  border-radius: 0;
+  padding: 2px;
+  outline: none;
+  border: 1px solid rgb(233, 233, 233);
+  font-size: 24px;
+  margin-right: 6px;
+}
+.button {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: none;
+  align-items: center;
+}
+.buttonimage {
+  width: 34px;
+  height: 34px;
+  padding: 6px;
+}
