@@ -23,11 +23,18 @@ function App({ youtube }) {
     youtube
       .popular() //
       .then(items => setVideos(items));
-  }, []);
-
+  }, [youtube]);
+  const goMain = () => {
+    youtube
+      .popular() //
+      .then(items => {
+        setVideos(items);
+        setSelectedVideo(null);
+      });
+  };
   return (
     <div className={styles.app}>
-      <Search onSearch={search} />
+      <Search onSearch={search} onLogoClick={goMain} />
       <section className={styles.content}>
         {selectedVideo && (
           <div className={styles.detail}>

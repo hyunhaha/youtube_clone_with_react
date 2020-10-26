@@ -5,6 +5,7 @@ const VideoDetail = ({ video }) => (
     <iframe
       className={styles.video}
       type="text/html"
+      title="yotube video player"
       width="100%"
       height="405"
       src={`https://www.youtube.com/embed/${video.id}`}

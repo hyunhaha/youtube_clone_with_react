@@ -15,9 +15,14 @@ const Search = props => {
   const onClick = () => {
     handelSearch();
   };
+  const onLogoClick = () => {
+    console.log("logo click");
+    props.onLogoClick();
+    inputRef.current.value = "";
+  };
   return (
     <header>
-      <div className={styles.logo}>
+      <div className={styles.logo} onClick={onLogoClick}>
         <img className={styles.image} src="/images/logo.png" alt="" />
         <h1 className={styles.title}>YOUTUBE</h1>
       </div>
