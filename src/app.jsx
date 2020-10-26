@@ -1,27 +1,48 @@
 import React, { useEffect, useState } from "react";
 
-import "./app.css";
-import VideoList from "./components/video_list";
-import Search from "./components/search";
+import styles from "./app.module.css";
+import VideoList from "./components/video_list/video_list";
+import Search from "./components/search/search";
+import VideoDetail from "./components/video_detail/video_detail";
 
-function App(props) {
+function App({ youtube }) {
   const [videos, setVideos] = useState([]);
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const onVideoClick = video => {
+    setSelectedVideo(video);
+  };
   const search = searchword => {
-    props.youtube
+    youtube
       .search(searchword) //
-      .then(items => setVideos(items));
+      .then(items => {
+        setVideos(items);
+        setSelectedVideo(null);
+      });
   };
   useEffect(() => {
-    props.youtube
+    youtube
       .popular() //
       .then(items => setVideos(items));
   }, []);
 
   return (
-    <>
+    <div className={styles.app}>
       <Search onSearch={search} />
-      <VideoList videos={videos} />
-    </>
+      <section className={styles.content}>
+        {selectedVideo && (
+          <div className={styles.detail}>
+            <VideoDetail video={selectedVideo} />
+          </div>
+        )}
+        <div className={styles.list}>
+          <VideoList
+            videos={videos}
+            onVideoClick={onVideoClick}
+            display={selectedVideo ? "list" : "grid"}
+          />
+        </div>
+      </section>
+    </div>
   );
 }
 
