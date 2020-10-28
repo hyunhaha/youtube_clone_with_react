@@ -9,6 +9,7 @@ header {
 .logo {
   display: flex;
   flex-direction: row;
+  cursor: pointer;
 }
 .image {
   width: 30px;

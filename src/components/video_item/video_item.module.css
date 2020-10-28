@@ -1,8 +1,9 @@
 .container {
   padding: 0.5em;
+  width: 304px;
 }
 .grid {
-  width: 33%;
+  width: 304px;
 }
 .list {
   width: 100%;
@@ -41,7 +42,7 @@
 }
 @media screen and (max-width: 768px) {
   .grid {
-    width: 50%;
+    width: 304px;
   }
   .list {
     width: 100%;

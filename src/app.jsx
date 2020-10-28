@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 import styles from "./app.module.css";
 import VideoList from "./components/video_list/video_list";
@@ -11,27 +11,30 @@ function App({ youtube }) {
   const onVideoClick = video => {
     setSelectedVideo(video);
   };
-  const search = searchword => {
-    youtube
-      .search(searchword) //
-      .then(items => {
-        setVideos(items);
-        setSelectedVideo(null);
-      });
-  };
+  const search = useCallback(
+    searchword => {
+      youtube
+        .search(searchword) //
+        .then(items => {
+          setVideos(items);
+          setSelectedVideo(null);
+        });
+    },
+    [youtube]
+  );
   useEffect(() => {
     youtube
       .popular() //
       .then(items => setVideos(items));
   }, [youtube]);
-  const goMain = () => {
+  const goMain = useCallback(() => {
     youtube
       .popular() //
       .then(items => {
         setVideos(items);
         setSelectedVideo(null);
       });
-  };
+  }, [youtube]);
   return (
     <div className={styles.app}>
       <Search onSearch={search} onLogoClick={goMain} />

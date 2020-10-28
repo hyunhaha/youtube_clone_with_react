@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import { useRef } from "react";
 import styles from "./search.module.css";
-const Search = props => {
+const Search = memo(props => {
   const inputRef = useRef();
   const handelSearch = () => {
     console.log(inputRef.current.value);
@@ -20,6 +20,7 @@ const Search = props => {
     props.onLogoClick();
     inputRef.current.value = "";
   };
+  console.log("header");
   return (
     <header>
       <div className={styles.logo} onClick={onLogoClick}>
@@ -38,6 +39,6 @@ const Search = props => {
       </button>
     </header>
   );
-};
+});
 
 export default Search;
